@@ -21,7 +21,7 @@ session_start();
     ?>
 
 
-    <main class="pt-16 h-full flex flex-col md:flex-row items-center justify-center md:justify-evenly gap-8 p-6 md:p-10">
+    <main class="pt-16 min-h-screen flex flex-col md:flex-row items-center justify-center md:justify-evenly gap-8 p-6 md:p-10">
 
         <!-- Image animée -->
         <div class="order-1 md:order-2 flex items-center justify-center">
@@ -52,9 +52,10 @@ session_start();
                     <!-- Email -->
                     <div class="relative">
                         <label for="email" class="block text-sm font-medium text-gray-700">Adresse email</label>
-                        <div class="input-container flex items-center border border-gray-300 rounded-lg overflow-hidden mt-1">
+                        <div class="input-container flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1
+            focus-within:ring-2 focus-within:ring-[#007a3f] transition">
                             <div class="pl-3 pr-3 text-gray-400 flex-shrink-0">
-                                <i data-feather="mail" class="w-5 h-5"></i>
+                                <i data-feather="mail" class="w-5 h-5 text-[#007a3f]"></i>
                             </div>
                             <input type="email" name="email" id="email" placeholder="votre.email@contact.com"
                                 value="<?php
@@ -71,15 +72,15 @@ session_start();
                     <!-- Password -->
                     <div>
                         <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
-                        <div class="input-container flex items-center border border-gray-300 rounded-lg overflow-hidden mt-1">
+                        <div class="input-container flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1
+            focus-within:ring-2 focus-within:ring-[#007a3f] transition">
                             <div class="pl-3 pr-3 text-gray-400 flex-shrink-0">
-                                <i data-feather="lock" class="w-5 h-5"></i>
+                                <i data-feather="lock" class="w-5 h-5 text-[#007a3f]"></i>
                             </div>
                             <input type="password" name="password" id="password" placeholder="••••••••"
                                 class="flex-1 py-3 outline-none" required>
                         </div>
                     </div>
-
                     <div>
                         <a href="./ForgotPassword/ForgotPassword.php" class="text-sm font-medium text-[#007a3f] hover:text-[#00612f] transition">
                             Mot de passe oublié ?
@@ -87,7 +88,7 @@ session_start();
                     </div>
 
                     <button type="submit"
-                        class="w-full bg-[#007a3f] hover:bg-[#00612f] text-white font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl">
+                        class="w-full bg-[#007a3f] text-white font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl hover:bg-transparent hover:text-[#007a3f] hover:border hover:border-[#007a3f]">
                         Connexion
                     </button>
                 </form>
@@ -104,7 +105,7 @@ session_start();
         </div>
     </main>
     <!-- Footer -->
-         <?php
+    <?php
     require_once("../inc/Footer.php");
     ?>
     <script>

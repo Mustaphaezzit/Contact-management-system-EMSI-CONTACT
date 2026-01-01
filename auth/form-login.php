@@ -49,9 +49,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['user_email'] = $user['email'];
     $_SESSION['user_role'] = $user['role'];
+    $_SESSION["user_nom"] =$user['nom'];
+    $_SESSION["user_prenom"] =$user['prenom'];
+    $_SESSION["user_active"] =$user['is_active'];
+    $_SESSION["user_avatar"] =$user['avatar_path'];
 
     setcookie('remember_email', $email, time() + 604800, "/");
 
-    header("Location: dashboard.php");
+    if($_SESSION["user_role"]=="user"){
+        header("Location: /test/dashboardUser.php");
+    }
+    else{
+        header("Location: ../test/dashboardAdmin.php");
+    }
+
+    
     exit;
 }
