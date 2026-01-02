@@ -4,7 +4,7 @@ require_once("../db/dbConnexion.php");
 $owner_id = $_SESSION["user_id"];
 //User stats
 $sqlUsers = "SELECT COUNT(*) FROM contacts WHERE owner_id = ?";
-$stmtUsers = $connexion->prepare($sqlUsers);
+$stmtUsers = $pdo->prepare($sqlUsers);
 $stmtUsers->bindParam(1, $owner_id);
 $stmtUsers->execute();
 $countUsers = $stmtUsers->fetchColumn();
@@ -14,14 +14,14 @@ FROM contacts c
 JOIN contact_tag ct ON c.id = ct.contact_id
 WHERE c.owner_id = ?;";
 
-$stmtTags = $connexion->prepare($sqlTags);
+$stmtTags = $pdo->prepare($sqlTags);
 $stmtTags->bindParam(1, $owner_id);
 $stmtTags->execute();
 $countTags = $stmtTags->fetchColumn();
 
 //ville stats
 $sqlVille = "SELECT city ,count(*) from contacts where owner_id=? and city  is not null  group by city";
-$stmtVille = $connexion->prepare($sqlVille);
+$stmtVille = $pdo->prepare($sqlVille);
 $stmtVille->bindParam(1, $owner_id);
 $stmtVille->execute();
 $infoVille = $stmtVille->fetch();
@@ -33,7 +33,7 @@ $sqlAllVilles = "
     WHERE owner_id = ? AND city IS NOT NULL AND city <> ''
     GROUP BY city
 ";
-$stmtAllVilles = $connexion->prepare($sqlAllVilles);
+$stmtAllVilles = $pdo->prepare($sqlAllVilles);
 $stmtAllVilles->bindParam(1, $owner_id);
 $stmtAllVilles->execute();
 $villeData = $stmtAllVilles->fetchAll(PDO::FETCH_ASSOC);
@@ -54,7 +54,7 @@ $sqlTags = "
     WHERE c.owner_id = ?
     GROUP BY t.id
 ";
-$stmtTags = $connexion->prepare($sqlTags);
+$stmtTags = $pdo->prepare($sqlTags);
 $stmtTags->bindParam(1, $owner_id);
 $stmtTags->execute();
 $tagsData = $stmtTags->fetchAll(PDO::FETCH_ASSOC);

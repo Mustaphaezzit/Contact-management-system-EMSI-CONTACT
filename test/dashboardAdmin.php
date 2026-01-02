@@ -3,7 +3,7 @@
 require_once("../db/dbConnexion.php");
 $owner_id=$_SESSION["user_id"];
 $sql = "SELECT COUNT(*) FROM contacts WHERE owner_id = ?";
-$stmt = $connexion->prepare($sql);
+$stmt = $pdo->prepare($sql);
 $stmt->bindParam(1, $owner_id);
 $stmt->execute();
 $count = $stmt->fetchColumn();

@@ -18,7 +18,7 @@
     require_once("../db/dbConnexion.php");
     $id = $_SESSION['user_id'];
     $sql = "SELECT * FROM users WHERE id=?";
-    $stmt = $connexion->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->bindParam(1, $id);
     $stmt->execute();
     $user = $stmt->fetch();
@@ -39,6 +39,9 @@
 
                 <div class="relative mb-4">
                     <label for="nom" class="block text-sm font-medium text-gray-700">Nom :</label>
+                    <div class="pl-3 pr-3 text-gray-400 flex-shrink-0">
+                                <i data-feather="mail" class="w-5 h-5 text-[#007a3f]"></i>
+                            </div>
                     <input type="text" name="nom" id="nom" value="<?= htmlentities($user['nom']) ?>"
                         class="flex-1 py-3 px-3 border border-[#007a3f] rounded-lg outline-none focus:ring-2 focus:ring-[#007a3f] w-full">
                 </div>
