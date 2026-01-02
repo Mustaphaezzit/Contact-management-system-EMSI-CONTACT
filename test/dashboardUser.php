@@ -107,7 +107,7 @@ foreach ($tagsData as $row) {
                         <div class="bg-[#007a3f] bg-opacity-10 p-4 rounded-full">
                             <lord-icon
                                 src="../assets/animation/UserAnim.json"
-                                trigger="hover"
+                                trigger="loop"
                                 colors="primary:#007a3f"
                                 style="width:24px;height:24px">
                             </lord-icon>
@@ -125,7 +125,7 @@ foreach ($tagsData as $row) {
                         <div class="bg-[#007a3f] bg-opacity-10 p-4 rounded-full">
                             <lord-icon
                                 src="../assets/animation/tagsAnim.json"
-                                trigger="hover"
+                                trigger="loop"
                                 colors="primary:#007a3f"
                                 style="width:24px;height:24px">
                             </lord-icon>
@@ -143,7 +143,7 @@ foreach ($tagsData as $row) {
                         <div class="bg-[#007a3f] bg-opacity-10 p-4 rounded-full">
                             <lord-icon
                                 src="../assets/animation/villeAnim.json"
-                                trigger="hover"
+                                trigger="loop"
                                 colors="primary:#007a3f"
                                 style="width:24px;height:24px">
                             </lord-icon>
