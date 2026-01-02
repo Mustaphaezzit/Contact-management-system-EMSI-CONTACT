@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$currentUri = $_SERVER['REQUEST_URI'];
 // Exemple de session pour test
 // $_SESSION['user_role'] = 'admin'; // ou 'user' ou null
 // $_SESSION['user_nom'] = 'Mustapha';
@@ -23,8 +23,20 @@ session_start();
                 <li><a href="/users.php" class="text-gray-700 hover:text-green-600">Utilisateurs</a></li>
                 <li><a href="/tags.php" class="text-gray-700 hover:text-green-600">Tags</a></li>
             <?php elseif ($_SESSION['user_role'] === 'user'): ?>
-                <li><a href="/my-contacts.php" class="text-gray-700 hover:text-green-600">Mes Contacts</a></li>
+                    <li>
+        <a href="../test/dashboardUser.php"
+           class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/test/dashboardUser.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
+           Mon Tableau de bord
+        </a>
+    </li>
+    <li>
+        <a href="/my-contacts.php"
+           class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/my-contacts.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
+           Mes Contacts
+        </a>
+    </li>
             <?php endif; ?>
+
         </ul>
 
         <!-- Bloc utilisateur -->
@@ -80,14 +92,8 @@ session_start();
                 </div>
 
                 <!-- Liens -->
-                <a href="<?php echo $_SESSION['user_role'] === 'admin' ? '/admin/profile.php' : '/user/profile.php'; ?>"
-                    class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
-                    <i data-feather="user" class="w-4 h-4 mr-3"></i>
-                    Mon Profil
-                </a>
-
-                <a href="/settings.php"
-                    class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                <a href="../test/settings.php"
+                    class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-[#007a3f] transition-colors">
                     <i data-feather="settings" class="w-4 h-4 mr-3"></i>
                     Paramètres
                 </a>
