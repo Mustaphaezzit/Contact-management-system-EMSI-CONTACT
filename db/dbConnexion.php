@@ -4,7 +4,7 @@ $host = "localhost";
 $db   = "contacts_db_php";
 $user = "root";
 $pass = "";
-$port = 3306;
+$port = 3310;
 
 try {
     $pdo = new PDO(

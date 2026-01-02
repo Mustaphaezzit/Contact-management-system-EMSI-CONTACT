@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Vérification BD
     $sql = "SELECT * FROM users WHERE email = :email AND password = :password LIMIT 1";
-    $stmt = $connexion->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->execute([
         'email' => $email,
         'password' => $password
