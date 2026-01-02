@@ -21,6 +21,9 @@ SET time_zone = "+00:00";
 -- Base de données : `contacts_db_php`
 --
 
+CREATE DATABASE IF NOT EXISTS contacts_db_php;
+USE contacts_db_php;
+
 -- --------------------------------------------------------
 
 --
