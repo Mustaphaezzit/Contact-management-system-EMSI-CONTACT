@@ -26,12 +26,12 @@ if (!empty($_FILES['avatar']['name'])) {
     if (!in_array($ext, $allowed)) {
         $errors['avatar'] = "Avatar invalide (jpg, jpeg, png)";
     } else {
-        $dir = "../storage/";
+        $dir = "../storage/photos_users/";
         if (!is_dir($dir)) mkdir($dir, 0755, true);
 
         $newName = "avatar_{$id}_" . time() . ".$ext";
         if (move_uploaded_file($_FILES['avatar']['tmp_name'], $dir.$newName)) {
-            $avatarPath = "storage/".$newName;
+            $avatarPath = "storage/photos_users/".$newName;
         } else {
             $errors['avatar'] = "Erreur upload avatar";
         }
@@ -42,7 +42,7 @@ if (!empty($_FILES['avatar']['name'])) {
 if ($errors) {
     $_SESSION['errors'] = $errors;
     $_SESSION['old'] = $_POST;
-    header("Location: settings.php");
+    header("Location: /test/settings.php");
     exit;
 }
 
@@ -67,6 +67,6 @@ $_SESSION['user_email']  = $email;
 
 /* REDIRECT */
 header("Location: " . ($_SESSION['user_role']==='admin'
-    ? "dashboardAdmin.php"
-    : "dashboardUser.php"));
+    ? "/test/admin/dashboardAdmin.php"
+    : "/test/user/dashboardUser.php"));
 exit;

@@ -127,7 +127,7 @@ $cities = $cityStmt->fetchAll(PDO::FETCH_COLUMN);
                         <?php foreach ($contacts as $contact): ?>
                             <?php
                             $avatar = $contact['photo_path']
-                                ? '../' . $contact['photo_path']
+                                ? '/' . $contact['photo_path']
                                 : 'https://ui-avatars.com/api/?name='
                                   . urlencode($contact['prenom'] . ' ' . $contact['nom'])
                                   . '&background=007a3f&color=fff';
@@ -230,27 +230,36 @@ $cities = $cityStmt->fetchAll(PDO::FETCH_COLUMN);
         feather.replace();
 
         // Supprimer contact
-        document.querySelectorAll('.delete-contact').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const contactId = this.getAttribute('data-id');
+document.querySelectorAll('.delete-contact').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const contactId = this.getAttribute('data-id');
 
-                Swal.fire({
-                    title: 'Êtes-vous sûr ?',
-                    text: "Voulez-vous vraiment supprimer ce contact ?",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#007a3f',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Oui, supprimer !',
-                    cancelButtonText: 'Annuler'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = 'contact-delete.php?id=' + contactId;
-                    }
-                });
-            });
+        Swal.fire({
+            title: 'Êtes-vous sûr ?',
+            html: `
+                <div class="flex flex-col items-center gap-3">
+                    <lord-icon
+                        src="../../assets/animation/trash.json"
+                        trigger="loop"
+                        style="width:80px;height:80px">
+                    </lord-icon>
+                    <p>Voulez-vous vraiment supprimer ce contact ?</p>
+                </div>
+            `,
+            showCancelButton: true,
+            confirmButtonColor: '#007a3f',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, supprimer !',
+            cancelButtonText: 'Annuler'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/test/user/actions/delete-contact.php?id=' + contactId;
+            }
         });
+    });
+});
+
 
         // Modal contact
         const modal = document.getElementById('contactModal');
