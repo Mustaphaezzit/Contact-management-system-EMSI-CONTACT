@@ -57,10 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     setcookie('remember_email', $email, time() + 604800, "/");
 
     if($_SESSION["user_role"]=="user"){
-        header("Location: /test/dashboardUser.php");
+        header("Location: /test/user/dashboardUser.php");
     }
     else{
-        header("Location: ../test/dashboardAdmin.php");
+        header("Location: /test/admin/dashboardAdmin.php");
     }
 
     

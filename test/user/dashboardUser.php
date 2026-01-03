@@ -1,6 +1,6 @@
 <?php
-require_once("../inc/Permission/User.php");
-require_once("../db/dbConnexion.php");
+require_once("../../inc/Permission/User.php");
+require_once("../../db/dbConnexion.php");
 $owner_id = $_SESSION["user_id"];
 //User stats
 $sqlUsers = "SELECT COUNT(*) FROM contacts WHERE owner_id = ?";
@@ -85,7 +85,7 @@ foreach ($tagsData as $row) {
 
 <body class="">
     <?php
-    require_once("../inc/Navbar.php");
+    require_once("../../inc/Navbar.php");
     ?>
     <main class="pt-20 min-h-screen p-6 md:p-10">
         <div class="max-w-7xl mx-auto ">
@@ -106,7 +106,7 @@ foreach ($tagsData as $row) {
                         </div>
                         <div class="bg-[#007a3f] bg-opacity-10 p-4 rounded-full">
                             <lord-icon
-                                src="../assets/animation/UserAnim.json"
+                                src="../../assets/animation/UserAnim.json"
                                 trigger="loop"
                                 colors="primary:#007a3f"
                                 style="width:24px;height:24px">
@@ -124,7 +124,7 @@ foreach ($tagsData as $row) {
                         </div>
                         <div class="bg-[#007a3f] bg-opacity-10 p-4 rounded-full">
                             <lord-icon
-                                src="../assets/animation/tagsAnim.json"
+                                src="../../assets/animation/tagsAnim.json"
                                 trigger="loop"
                                 colors="primary:#007a3f"
                                 style="width:24px;height:24px">
@@ -142,7 +142,7 @@ foreach ($tagsData as $row) {
                         </div>
                         <div class="bg-[#007a3f] bg-opacity-10 p-4 rounded-full">
                             <lord-icon
-                                src="../assets/animation/villeAnim.json"
+                                src="../../assets/animation/villeAnim.json"
                                 trigger="loop"
                                 colors="primary:#007a3f"
                                 style="width:24px;height:24px">
@@ -167,9 +167,7 @@ foreach ($tagsData as $row) {
             </div>
         </div>
     </main>
-    <?php
-    require_once("../inc/Footer.php")
-    ?>
+
 
     <script>
         // Initialiser Feather Icons

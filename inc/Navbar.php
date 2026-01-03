@@ -23,18 +23,18 @@ $currentUri = $_SERVER['REQUEST_URI'];
                 <li><a href="/users.php" class="text-gray-700 hover:text-green-600">Utilisateurs</a></li>
                 <li><a href="/tags.php" class="text-gray-700 hover:text-green-600">Tags</a></li>
             <?php elseif ($_SESSION['user_role'] === 'user'): ?>
-                    <li>
-        <a href="../test/dashboardUser.php"
-           class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/test/dashboardUser.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
-           Mon Tableau de bord
-        </a>
-    </li>
-    <li>
-        <a href="/my-contacts.php"
-           class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/my-contacts.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
-           Mes Contacts
-        </a>
-    </li>
+                <li>
+                    <a href="/test/user/dashboardUser.php"
+                        class="text-gray-700 hover:text-green-600 <?= (strpos($currentUri, '/test/user/dashboardUser.php') !==false) ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
+                        Mon Tableau de bord
+                    </a>
+                </li>
+                <li>
+<a href="/test/user/mes_contacts.php"
+   class="text-gray-700 hover:text-green-600 <?= (strpos($currentUri, '/test/user/mes_contacts.php') !== false) ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
+   Mes Contacts
+</a>
+                </li>
             <?php endif; ?>
 
         </ul>
@@ -49,13 +49,14 @@ $currentUri = $_SERVER['REQUEST_URI'];
                     <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-md">
                         <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-white shadow-md">
                             <img src="<?php
-                                        echo isset($_SESSION['user_avatar']) && $_SESSION['user_avatar'] != null
-                                            ? $_SESSION['user_avatar']
+                                        echo !empty($_SESSION['user_avatar'])
+                                            ? '/'.$_SESSION["user_avatar"]
                                             : 'https://ui-avatars.com/api/?name='
                                             . urlencode(($_SESSION['user_prenom'] ?? 'User') . ' ' . ($_SESSION['user_nom'] ?? ''))
                                             . '&background=007a3f&color=fff&bold=true&size=128';
-                                        ?>"
-                                alt="Avatar" class="w-full h-full object-cover">
+                                        ?>" alt="Avatar" class="w-full h-full object-cover">
+
+
                         </div>
 
                     </div>
@@ -92,7 +93,7 @@ $currentUri = $_SERVER['REQUEST_URI'];
                 </div>
 
                 <!-- Liens -->
-                <a href="../test/settings.php"
+                <a href="/test/settings.php"
                     class="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-[#007a3f] transition-colors">
                     <i data-feather="settings" class="w-4 h-4 mr-3"></i>
                     Paramètres
@@ -100,7 +101,7 @@ $currentUri = $_SERVER['REQUEST_URI'];
 
                 <div class="border-t border-gray-100 my-1"></div>
 
-                <a href="../auth/Logout.php"
+                <a href="/auth/Logout.php"
                     class="flex items-center px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors">
                     <i data-feather="log-out" class="w-4 h-4 mr-3"></i>
                     Déconnexion
