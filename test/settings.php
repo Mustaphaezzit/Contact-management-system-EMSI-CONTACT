@@ -14,7 +14,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$id]);
 $user = $stmt->fetch();
 
-$avatarUrl = "/" .$user['avatar_path'] ?? 'https://ui-avatars.com/api/?name=' . urlencode($user['prenom'] . ' ' . $user['nom']) . '&background=007a3f&color=fff';
+$avatarUrl = $user['avatar_path'] ? "/" .$user['avatar_path'] : 'https://ui-avatars.com/api/?name=' . urlencode($user['prenom'] . ' ' . $user['nom']) . '&background=007a3f&color=fff';
 ?>
 
 <!DOCTYPE html>
