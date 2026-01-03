@@ -1,6 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EMSIContact - Utilisateurs</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-gray-50">
 <?php
 require_once("../../../inc/Navbar.php");
-require_once("../../../inc/Permission/admin.php"); // Vérifie si admin
+require_once("../../../inc/Permission/admin.php"); 
 require_once("../../../db/dbConnexion.php");
 
 // Pagination & search
@@ -41,19 +52,6 @@ $stmt->execute($params);
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>EMSIContact - Utilisateurs</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/feather-icons"></script>
-<script src="https://cdn.lordicon.com/lordicon.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body class="bg-gray-50">
-
-
 <main class="pt-24 px-6 max-w-7xl mx-auto">
 
     <!-- Header -->
@@ -85,7 +83,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endif; ?>
 
     <!-- Table -->
-    <div class="overflow-x-auto bg-white shadow-lg rounded-xl border">
+    <div class="overflow-x-auto bg-white shadow-lg rounded-xl border mb-10">
         <table class="min-w-full text-sm">
             <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
                 <tr>
@@ -108,12 +106,12 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             : 'https://ui-avatars.com/api/?name='.urlencode($user['prenom'].' '.$user['nom']).'&background=007a3f&color=fff';
                         ?>
                         <tr class="hover:bg-gray-50">
-                            <td class="px-6 py-4 flex gap-3 items-center">
+                            <td class="px-6 py-4 flex gap-3 items-center text-center">
                                 <img src="<?= $avatar ?>" class="w-10 h-10 rounded-full object-cover">
                                 <span class="font-semibold"><?= htmlspecialchars($user['prenom'].' '.$user['nom']) ?></span>
                             </td>
-                            <td class="px-6 py-4"><?= htmlspecialchars($user['email']) ?></td>
-                            <td class="px-6 py-4"><?= htmlspecialchars($user['role'] ?? '-') ?></td>
+                            <td class="px-6 py-4 text-center"><?= htmlspecialchars($user['email']) ?></td>
+                            <td class="px-6 py-4 text-center"><?= htmlspecialchars($user['role'] ?? '-') ?></td>
                             <td class="px-6 py-4 text-center">
                                 <div class="flex items-center justify-center gap-4">
                                     <a href="./edit_user_form.php?id=<?= $user['id'] ?>" class="text-blue-600 hover:text-green-800" title="Modifier"><i data-feather="edit"></i></a>
