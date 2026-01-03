@@ -10,6 +10,7 @@ session_start();
     <link rel="icon" type="image/png" href="../assets/EmsiContact.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <title>Connexion - Gestion Contact</title>
 </head>
 
@@ -54,9 +55,13 @@ session_start();
                         <label for="email" class="block text-sm font-medium text-gray-700">Adresse email</label>
                         <div class="input-container flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1
             focus-within:ring-2 focus-within:ring-[#007a3f] transition">
-                            <div class="pl-3 pr-3 text-gray-400 flex-shrink-0">
-                                <i data-feather="mail" class="w-5 h-5 text-[#007a3f]"></i>
-                            </div>
+                        <lord-icon
+                            src="../assets/animation/email.json"
+                            trigger="loop"
+                            colors="primary:#007a3f"
+                            style="width:24px;height:24px"
+                            class="ml-2">
+                        </lord-icon>
                             <input type="email" name="email" id="email" placeholder="votre.email@contact.com"
                                 value="<?php
                                         if (isset($_COOKIE['remember_email'])) {
@@ -74,9 +79,13 @@ session_start();
                         <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
                         <div class="input-container flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1
             focus-within:ring-2 focus-within:ring-[#007a3f] transition">
-                            <div class="pl-3 pr-3 text-gray-400 flex-shrink-0">
-                                <i data-feather="lock" class="w-5 h-5 text-[#007a3f]"></i>
-                            </div>
+                                                               <lord-icon
+                            src="../assets/animation/lock.json"
+                            trigger="loop"
+                            colors="primary:#007a3f"
+                            style="width:24px;height:24px"
+                            class="ml-2">
+                        </lord-icon>
                             <input type="password" name="password" id="password" placeholder="••••••••"
                                 class="flex-1 py-3 outline-none" required>
                         </div>

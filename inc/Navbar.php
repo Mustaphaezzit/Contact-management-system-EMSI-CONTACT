@@ -19,22 +19,35 @@ $currentUri = $_SERVER['REQUEST_URI'];
         <!-- Menu navigation selon rôle -->
         <ul class="flex items-center space-x-6">
             <?php if ($_SESSION['user_role'] === 'admin'): ?>
-                <li><a href="/contacts.php" class="text-gray-700 hover:text-green-600">Contacts</a></li>
-                <li><a href="/users.php" class="text-gray-700 hover:text-green-600">Utilisateurs</a></li>
-                <li><a href="/tags.php" class="text-gray-700 hover:text-green-600">Tags</a></li>
+                <li>
+                    <a href="/test/admin/gestionContacts/contacts.php" class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/contacts.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
+                        Contacts
+                    </a>
+                </li>
+                <li>
+                    <a href="/test/admin/gestionUsers/users.php" class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/users.php' || $currentUri === '/test/admin/gestionUsers/users.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
+                        Utilisateurs
+                    </a>
+                </li>
+                <li>
+                    <a href="/test/admin/gestionTags/tags.php" class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/test/admin/gestionTags/tags.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
+                        Tags
+                    </a>
+                </li>
+
             <?php elseif ($_SESSION['user_role'] === 'user'): ?>
-                    <li>
-        <a href="../test/dashboardUser.php"
-           class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/test/dashboardUser.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
-           Mon Tableau de bord
-        </a>
-    </li>
-    <li>
-        <a href="/my-contacts.php"
-           class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/my-contacts.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
-           Mes Contacts
-        </a>
-    </li>
+                <li>
+                    <a href="/test/user/dashboardUser.php"
+                        class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/test/dashboardUser.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
+                        Mon Tableau de bord
+                    </a>
+                </li>
+                <li>
+                    <a href="/test/user/mes_contacts.php"
+                        class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/test/user/mes_contacts.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">
+                        Mes Contacts
+                    </a>
+                </li>
             <?php endif; ?>
 
         </ul>
