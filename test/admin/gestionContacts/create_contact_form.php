@@ -25,7 +25,7 @@
             colors="primary:#007a3f"
             style="width:64px; height:64px">
         </lord-icon>
-        <h1 class="text-3xl font-bold text-gray-800">Modifier un Contact</h1>
+        <h1 class="text-3xl font-bold text-gray-800">Créer un contact</h1>
     </div>
 
     <main class="min-h-screen flex flex-col md:flex-row items-center justify-center md:justify-evenly gap-8 p-6 md:p-10">

@@ -49,20 +49,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['user_email'] = $user['email'];
     $_SESSION['user_role'] = $user['role'];
-    $_SESSION["user_nom"] =$user['nom'];
-    $_SESSION["user_prenom"] =$user['prenom'];
-    $_SESSION["user_active"] =$user['is_active'];
-    $_SESSION["user_avatar"] =$user['avatar_path'];
+    $_SESSION["user_nom"] = $user['nom'];
+    $_SESSION["user_prenom"] = $user['prenom'];
+    $_SESSION["user_active"] = $user['is_active'];
+    $_SESSION["user_avatar"] = $user['avatar_path'];
+
+    // Vérification si l'utilisateur est banni
+    if ($_SESSION["user_active"] == 0) {
+        session_destroy();
+        header("Location: /test/banned.php");
+        exit;
+    }
 
     setcookie('remember_email', $email, time() + 604800, "/");
 
-    if($_SESSION["user_role"]=="user"){
+    if ($_SESSION["user_role"] == "user") {
         header("Location: /test/user/dashboardUser.php");
-    }
-    else{
+    } else {
         header("Location: /test/admin/dashboardAdmin.php");
     }
 
-    
+
     exit;
 }

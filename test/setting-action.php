@@ -26,7 +26,7 @@ if (!empty($_FILES['avatar']['name'])) {
     if (!in_array($ext, $allowed)) {
         $errors['avatar'] = "Avatar invalide (jpg, jpeg, png)";
     } else {
-        $dir = "../storage/photos_users/";
+        $dir = "/storage/photos_users/";
         if (!is_dir($dir)) mkdir($dir, 0755, true);
 
         $newName = "avatar_{$id}_" . time() . ".$ext";

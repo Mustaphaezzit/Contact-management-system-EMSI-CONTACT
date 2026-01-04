@@ -182,9 +182,7 @@ foreach ($tagsData as $row) {
                 datasets: [{
                     label: 'Répartition par tags',
                     data: <?= json_encode($tagCounts) ?>,
-                    backgroundColor: [
-                        '#007a3f', '#3b82f6', '#a855f7', '#f97316', '#6b7280', '#ef4444', '#facc15'
-                    ],
+                    backgroundColor:  ['#007a3f','#adffd8','#0aff89','#00cc69','#00b85f','#008f4a','#006635','#00522a','#002915'],
                     borderColor: '#fff',
                     borderWidth: 2
                 }]
@@ -215,7 +213,7 @@ foreach ($tagsData as $row) {
                 labels: <?= json_encode($villeLabels) ?>,
                 datasets: [{
                     data: <?= json_encode($villeCounts) ?>,
-                    backgroundColor: ['#007a3f', '#3b82f6', '#a855f7', '#f97316', '#6b7280', '#ef4444', '#facc15'],
+                    backgroundColor:  ['#007a3f','#adffd8','#0aff89','#00cc69','#00b85f','#008f4a','#006635','#00522a','#002915'],
                     borderWidth: 2,
                     borderColor: '#fff'
                 }]

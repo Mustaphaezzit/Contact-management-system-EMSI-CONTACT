@@ -1,22 +1,3 @@
-<?php
-session_start();
-require_once("../inc/Navbar.php");
-require_once("../db/dbConnexion.php");
-
-$id = $_SESSION['user_id'] ?? null;
-if (!$id) {
-    header("Location: login.php");
-    exit;
-}
-
-$sql = "SELECT * FROM users WHERE id = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$id]);
-$user = $stmt->fetch();
-
-$avatarUrl = $user['avatar_path'] ? "/" .$user['avatar_path'] : 'https://ui-avatars.com/api/?name=' . urlencode($user['prenom'] . ' ' . $user['nom']) . '&background=007a3f&color=fff';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +11,25 @@ $avatarUrl = $user['avatar_path'] ? "/" .$user['avatar_path'] : 'https://ui-avat
 </head>
 
 <body class="bg-gray-50">
-    <div class="text-center flex flex-col items-center gap-2 mb-6 mt-10">
+    <?php
+    session_start();
+    require_once("../inc/Navbar.php");
+    require_once("../db/dbConnexion.php");
+
+    $id = $_SESSION['user_id'] ?? null;
+    if (!$id) {
+        header("Location: login.php");
+        exit;
+    }
+
+    $sql = "SELECT * FROM users WHERE id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+    $user = $stmt->fetch();
+
+    $avatarUrl = $user['avatar_path'] ? "/" . $user['avatar_path'] : 'https://ui-avatars.com/api/?name=' . urlencode($user['prenom'] . ' ' . $user['nom']) . '&background=007a3f&color=fff';
+    ?>
+    <div class="text-center flex flex-col items-center gap-2 mb-6 mt-24">
         <lord-icon
             src="../assets/animation/userLooking.json"
             trigger="loop"
