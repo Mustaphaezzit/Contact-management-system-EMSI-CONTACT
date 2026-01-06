@@ -1,28 +1,10 @@
-<?php
-session_start();
-require_once("../inc/Navbar.php");
-require_once("../db/dbConnexion.php");
-
-$id = $_SESSION['user_id'] ?? null;
-if (!$id) {
-    header("Location: login.php");
-    exit;
-}
-
-$sql = "SELECT * FROM users WHERE id = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$id]);
-$user = $stmt->fetch();
-
-$avatarUrl = $user['avatar_path'] ? "/" .$user['avatar_path'] : 'https://ui-avatars.com/api/?name=' . urlencode($user['prenom'] . ' ' . $user['nom']) . '&background=007a3f&color=fff';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                 <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
     <title>EMSIContact - Paramètres</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -30,7 +12,25 @@ $avatarUrl = $user['avatar_path'] ? "/" .$user['avatar_path'] : 'https://ui-avat
 </head>
 
 <body class="bg-gray-50">
-    <div class="text-center flex flex-col items-center gap-2 mb-6 mt-10">
+    <?php
+    session_start();
+    require_once("../inc/Navbar.php");
+    require_once("../db/dbConnexion.php");
+
+    $id = $_SESSION['user_id'] ?? null;
+    if (!$id) {
+        header("Location: login.php");
+        exit;
+    }
+
+    $sql = "SELECT * FROM users WHERE id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+    $user = $stmt->fetch();
+
+    $avatarUrl = $user['avatar_path'] ? "/" . $user['avatar_path'] : 'https://ui-avatars.com/api/?name=' . urlencode($user['prenom'] . ' ' . $user['nom']) . '&background=007a3f&color=fff';
+    ?>
+    <div class="text-center flex flex-col items-center gap-2 mb-6 mt-24">
         <lord-icon
             src="../assets/animation/userLooking.json"
             trigger="loop"
@@ -100,10 +100,26 @@ $avatarUrl = $user['avatar_path'] ? "/" .$user['avatar_path'] : 'https://ui-avat
                     </div>
                 </div>
 
+                <!-- Nouveau mot de passe -->
+                <div class="relative mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Nouveau mot de passe</label>
+                    <div class="flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1 focus-within:ring-2 focus-within:ring-[#007a3f] transition">
+                        <input type="password" id="password" name="password" class="flex-1 py-3 pl-2 outline-none" placeholder="Laisser vide pour ne pas changer">
+                    </div>
+                </div>
+
+                <!-- Confirmer mot de passe -->
+                <div class="relative mb-4">
+                    <label class="block text-sm font-medium text-gray-700">Confirmer le mot de passe</label>
+                    <div class="flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1 focus-within:ring-2 focus-within:ring-[#007a3f] transition">
+                        <input type="password" id="confirm_password" name="confirm_password" class="flex-1 py-3 pl-2 outline-none" placeholder="Retaper le mot de passe">
+                    </div>
+                    <p id="password-match" class="text-sm mt-1 flex items-center gap-2"></p>
+                </div>
+
                 <button type="submit" class="w-full bg-[#007a3f] hover:bg-transparent text-white hover:text-[#007a3f] border-2 hover:border-[#007a3f] font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg mt-4">
                     Sauvegarder vos changements
                 </button>
-
             </form>
         </div>
 
@@ -128,8 +144,46 @@ $avatarUrl = $user['avatar_path'] ? "/" .$user['avatar_path'] : 'https://ui-avat
             };
             reader.readAsDataURL(file);
         }
+
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm_password');
+        const passwordMatch = document.getElementById('password-match');
+
+function checkPasswordMatch() {
+    passwordMatch.innerHTML = ''; // Reset contenu
+
+    if(confirmPassword.value === '') return;
+
+    const icon = document.createElement('lord-icon');
+    icon.style.width = '24px';
+    icon.style.height = '24px';
+    icon.style.display = 'inline-block';
+    icon.style.verticalAlign = 'middle';
+
+    const span = document.createElement('span');
+    span.className = 'ml-1';
+    
+    if (password.value === confirmPassword.value) {
+        icon.setAttribute('src', '/assets/animation/véerifier.json'); 
+        icon.setAttribute('trigger', 'loop');
+        icon.setAttribute('colors', 'primary:#007a3f');
+        span.textContent = "Les mots de passe correspondent";
+        span.className = 'text-green-600';
+    } else {
+        icon.setAttribute('src', '/assets/animation/Invalid.json'); // icon error
+        icon.setAttribute('trigger', 'loop');
+        icon.setAttribute('colors', 'primary:#ff0000');
+        span.textContent = "Les mots de passe ne correspondent pas";
+        span.className = 'text-red-600';
+    }
+
+    passwordMatch.appendChild(icon);
+    passwordMatch.appendChild(span);
+}
+
+        password.addEventListener('input', checkPasswordMatch);
+        confirmPassword.addEventListener('input', checkPasswordMatch);
     </script>
 
 </body>
-
 </html>

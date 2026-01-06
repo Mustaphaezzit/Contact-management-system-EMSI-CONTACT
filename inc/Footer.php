@@ -13,7 +13,7 @@
             Projet créé par  
             <span class="font-semibold">EZZIT MUSTAPHA</span>, 
             <span class="font-semibold">AIT IDIR MOAD</span>, 
-            <span class="font-semibold">KASSIDI ILIASS</span>
+            <span class="font-semibold">KASSIDI ILIASSE</span>
         </div>
     </footer>
 </body>

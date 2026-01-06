@@ -1,18 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <title>EMSIContact - Étiquettes</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
 <?php
-require_once("../../../inc/Navbar.php");
-require_once("../../../inc/Permission/admin.php"); // Vérifie si admin
+require_once("../../../inc/Permission/admin.php");
 require_once("../../../db/dbConnexion.php");
 
 // Pagination & search
@@ -46,15 +33,27 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+    <meta charset="UTF-8">
+    <title>EMSIContact - Étiquettes</title>
+         <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 <body class="bg-gray-50">
-
+    <?php require_once("../../../inc/Navbar.php"); ?>
 <main class="pt-24 px-6 max-w-7xl mx-auto">
 
     <!-- Header -->
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-800">Toutes les Étiquettes</h1>
-        <a href="./create_tag.php" class="flex items-center gap-2 bg-[#007a3f] text-white px-4 py-2 rounded-lg hover:bg-[#006633] transition">
+        <a href="/test/admin/gestionTags/create_tag_form.php" class="flex items-center gap-2 bg-[#007a3f] text-white px-4 py-2 rounded-lg hover:bg-[#006633] transition">
             <lord-icon src="../../../assets/animation/plusWhite.json" trigger="loop" style="width:20px; height:20px"></lord-icon>
             <span class="font-medium">Ajouter</span>
         </a>
@@ -101,7 +100,7 @@ $tags = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td class="px-6 py-4 text-center"><?= htmlspecialchars($tag['label']) ?></td>
                             <td class="px-6 py-4 text-center">
                                 <div class="flex items-center justify-center gap-4">
-                                    <a href="./edit_tag.php?id=<?= $tag['id'] ?>" class="text-blue-600 hover:text-green-800" title="Modifier"><i data-feather="edit"></i></a>
+                                    <a href="./edit_tag_form.php?id=<?= $tag['id'] ?>" class="text-blue-600 hover:text-green-800" title="Modifier"><i data-feather="edit"></i></a>
                                     <a href="#" class="text-red-600 hover:text-red-800 delete-tag" data-id="<?= $tag['id'] ?>" title="Supprimer"><i data-feather="trash-2"></i></a>
                                 </div>
                             </td>

@@ -37,7 +37,7 @@ if ($stmt->fetch()) {
 if ($errors) {
     $_SESSION['errors'] = $errors;
     $_SESSION['old'] = $old;
-    header("Location: ../../edit-contact.php?id=" . $contactId);
+    header("Location: /test/user/contact-edit.php?id=" . $contactId);
     exit;
 }
 
@@ -45,40 +45,63 @@ if ($errors) {
 $sqlGetContact = "SELECT photo_path FROM contacts WHERE id=?";
 $stmt = $pdo->prepare($sqlGetContact);
 $stmt->execute([$contactId]);
-$currentContact = $stmt->fetch(PDO::FETCH_ASSOC);
+$currentContact = $stmt->fetch();
 $photoPath = $currentContact['photo_path'] ?? null;
 
+// Gérer le téléchargement de la nouvelle photo
 // Gérer le téléchargement de la nouvelle photo
 if (isset($_FILES['avatar']) && $_FILES['avatar']['name']) {
 
     $allowedTypes = ['image/jpeg', 'image/png'];
+
     if (!in_array($_FILES['avatar']['type'], $allowedTypes)) {
         $errors[] = "Format de photo invalide (jpg, jpeg, png uniquement)";
     } else {
-        $storageDir = "../../../storage/photos_contacts/";
-        if (!is_dir($storageDir)) mkdir($storageDir, 0755, true);
 
+        // 📂 Chemin ABSOLU vers storage
+        $storageDir = $_SERVER['DOCUMENT_ROOT'] . "/storage/photos_contacts/";
+
+        if (!is_dir($storageDir)) {
+            mkdir($storageDir, 0755, true);
+        }
+
+        // 🔐 Sécuriser nom/prénom
+        $safeNom    = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $nom));
+        $safePrenom = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $prenom));
+
+        // 🕒 Date unique
+        $date = date("Ymd_His");
+
+        // 📄 Extension
         $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-        $filename = uniqid('contact_') . $nom . $prenom . '.' . $ext;
+
+        // 📛 Nom final du fichier
+        $filename = "contact_{$safeNom}_{$safePrenom}_{$date}.{$ext}";
+
         $targetPath = $storageDir . $filename;
 
         if (move_uploaded_file($_FILES['avatar']['tmp_name'], $targetPath)) {
-            // Supprimer l'ancienne photo si elle existe
-            if ($photoPath && file_exists("../../" . $photoPath)) {
-                unlink("../../" . $photoPath);
+
+            // 🗑️ Supprimer l'ancienne photo si elle existe
+            if ($photoPath && file_exists($_SERVER['DOCUMENT_ROOT'] . "/" . $photoPath)) {
+                unlink($_SERVER['DOCUMENT_ROOT'] . "/" . $photoPath);
             }
+
+            // 💾 Chemin RELATIF stocké en BDD
             $photoPath = "storage/photos_contacts/" . $filename;
+
         } else {
             $errors[] = "Erreur lors de l'upload de la photo";
         }
     }
 }
 
+
 // Si erreur lors de l'upload, rediriger
 if ($errors) {
     $_SESSION['errors'] = $errors;
     $_SESSION['old'] = $old;
-    header("Location: ../../edit-contact.php?id=" . $contactId);
+    header("Location: /test/user/contact-edit.php?id=" . $contactId);
     exit;
 }
 

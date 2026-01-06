@@ -9,7 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
 
     <title>Mot de passe oublié - Gestion Contact</title>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>

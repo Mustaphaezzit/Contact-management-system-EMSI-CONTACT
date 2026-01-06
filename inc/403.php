@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <title>403 - Accès interdit</title>
@@ -12,7 +13,7 @@
 <body class="bg-gray-50">
     <?php require_once(__DIR__ . '/Navbar.php'); ?>
 
-    <main class="flex flex-col md:flex-row items-center justify-between min-h-[80vh] px-4 md:px-16 py-8 gap-8">
+    <main class="flex flex-col md:flex-row items-center justify-between min-h-[80vh] px-4 md:px-16 py-8 gap-8 mt-10">
 
         <!-- Image -->
         <div class="flex justify-center md:w-1/2">
@@ -34,8 +35,6 @@
             </a>
         </div>
     </main>
-
-    <?php require_once(__DIR__ . '/Footer.php'); ?>
 </body>
 
 </html>

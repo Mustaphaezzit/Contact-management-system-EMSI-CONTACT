@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject = trim($_POST['subject'] ?? '');
     $message = trim($_POST['message'] ?? '');
 
-    // Header correct
     $headers  = "From: Admin <" . $_SESSION['user_email'] . ">\r\n";
     $headers .= "Reply-To: " . $_SESSION['user_email'] . "\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
@@ -27,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Le sujet et le message sont obligatoires.";
     } else {
         if (mail($email, $subject, $message, $headers)) {
-            // ✅ REDIRECTION ICI
+            
             header("Location: /test/admin/gestionUsers/users.php?mail=success");
             exit;
         } else {
@@ -36,11 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Navbar APRÈS la logique PHP
+// Navbar
 require_once("../../../../inc/Navbar.php");
 
-// Email depuis l'URL
-$emailTo = htmlspecialchars($_GET['email'] ?? '');
+// recupere l'email avec methode GET
+$emailTo = $_GET['email'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="en">

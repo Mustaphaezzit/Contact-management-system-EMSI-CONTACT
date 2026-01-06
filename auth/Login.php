@@ -101,15 +101,6 @@ session_start();
                         Connexion
                     </button>
                 </form>
-
-                <div class="mt-6 text-center">
-                    <p class="text-sm text-gray-600">
-                        Besoin d'aide ?
-                        <a href="#" class="font-medium text-[#007a3f] hover:text-[#00612f] transition ml-1">
-                            Contactez le support
-                        </a>
-                    </p>
-                </div>
             </div>
         </div>
     </main>

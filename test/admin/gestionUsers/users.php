@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>EMSIContact - Utilisateurs</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://unpkg.com/feather-icons"></script>
-<script src="https://cdn.lordicon.com/lordicon.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body class="bg-gray-50">
+
 <?php
-require_once("../../../inc/Navbar.php");
 require_once("../../../inc/Permission/admin.php"); 
 require_once("../../../db/dbConnexion.php");
 
@@ -49,8 +38,22 @@ if (!empty($search)) {
 $sql .= " ORDER BY created_at DESC LIMIT $limit OFFSET $offset";
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$users = $stmt->fetchAll();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EMSIContact - Utilisateurs</title>
+     <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="bg-gray-50">
+    <?php require_once("../../../inc/Navbar.php"); ?>
 
 <main class="pt-24 px-6 max-w-7xl mx-auto">
 

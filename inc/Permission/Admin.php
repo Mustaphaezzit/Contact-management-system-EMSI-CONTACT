@@ -2,6 +2,6 @@
 require_once 'auth.php';
 
 if ($_SESSION['user_role'] !== 'admin') {
-    header("Location: ../inc/403.php");
+    header("Location: /inc/403.php");
     exit;
 }

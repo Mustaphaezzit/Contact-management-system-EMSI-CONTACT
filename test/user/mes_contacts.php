@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("../../db/dbConnexion.php");
+require_once("../../inc/Permission/User.php");
 
 $userId = $_SESSION['user_id'] ?? null;
 if (!$userId) {
@@ -65,6 +66,8 @@ $cities = $cityStmt->fetchAll(PDO::FETCH_COLUMN);
 <head>
     <meta charset="UTF-8">
     <title>EMSIContact - Mes Contacts</title>
+         <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
