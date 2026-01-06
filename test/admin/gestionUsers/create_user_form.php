@@ -43,7 +43,7 @@ require_once("../../../db/dbConnexion.php");
           <label class="block text-sm font-medium text-gray-700">Nom</label>
           <div class="flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1 focus-within:ring-2 focus-within:ring-[#007a3f] transition">
             <lord-icon src="../../../assets/animation/UserAnim.json" trigger="loop" colors="primary:#007a3f" style="width:24px;height:24px" class="ml-2"></lord-icon>
-            <input type="text" name="nom" class="flex-1 py-3 pl-2 outline-none" placeholder="Ex: Mustapha" required>
+            <input type="text" name="nom" class="flex-1 py-3 pl-2 outline-none" placeholder="Nom de l'utilisateur" required>
           </div>
         </div>
 
@@ -52,7 +52,7 @@ require_once("../../../db/dbConnexion.php");
           <label class="block text-sm font-medium text-gray-700">Prénom</label>
           <div class="flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1 focus-within:ring-2 focus-within:ring-[#007a3f] transition">
             <lord-icon src="../../../assets/animation/UserAnim.json" trigger="loop" colors="primary:#007a3f" style="width:24px;height:24px" class="ml-2"></lord-icon>
-            <input type="text" name="prenom" class="flex-1 py-3 pl-2 outline-none" placeholder="Ex: Ezzit" required>
+            <input type="text" name="prenom" class="flex-1 py-3 pl-2 outline-none" placeholder="Prénom de l'utilisateur" required>
           </div>
         </div>
         <!-- Email -->

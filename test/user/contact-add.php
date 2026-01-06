@@ -73,7 +73,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
                                    style="width:24px;height:24px"
                                    class="ml-2"></lord-icon>
                         <input type="text" name="nom" class="flex-1 py-3 pl-2 outline-none"
-                               required placeholder="Exemple : Joe" value="<?= htmlspecialchars($old['nom'] ?? '') ?>">
+                               required placeholder="Votre nom" value="<?= htmlspecialchars($old['nom'] ?? '') ?>">
                     </div>
                 </div>
 
@@ -88,7 +88,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
                                    style="width:24px;height:24px"
                                    class="ml-2"></lord-icon>
                         <input type="text" name="prenom" class="flex-1 py-3 pl-2 outline-none"
-                               required placeholder="Exemple : Doe" value="<?= htmlspecialchars($old['prenom'] ?? '') ?>">
+                               required placeholder="Votre prénom" value="<?= htmlspecialchars($old['prenom'] ?? '') ?>">
                     </div>
                 </div>
 

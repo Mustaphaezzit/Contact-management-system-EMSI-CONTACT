@@ -111,7 +111,9 @@ $users = $stmtUsers->fetchAll(PDO::FETCH_ASSOC);
                     <lord-icon src="../../../assets/animation/UserAnim.json" trigger="loop" colors="primary:#007a3f" style="width:24px;height:24px" class="ml-2"></lord-icon>
                     <input type="text" name="nom"
                         value="<?= htmlspecialchars($contact['nom']) ?>"
-                        class="flex-1 py-3 pl-2 outline-none" required>
+                        class="flex-1 py-3 pl-2 outline-none" required
+                        placeholder="Votre nom"
+                        >
                 </div>
             </div>
 
@@ -122,7 +124,9 @@ $users = $stmtUsers->fetchAll(PDO::FETCH_ASSOC);
                     <lord-icon src="../../../assets/animation/UserAnim.json" trigger="loop" colors="primary:#007a3f" style="width:24px;height:24px" class="ml-2"></lord-icon>
                     <input type="text" name="prenom"
                         value="<?= htmlspecialchars($contact['prenom']) ?>"
-                        class="flex-1 py-3 pl-2 outline-none" required>
+                        class="flex-1 py-3 pl-2 outline-none" required
+                        placeholder="Votre prenom"
+                        >
                 </div>
             </div>
 
@@ -133,7 +137,8 @@ $users = $stmtUsers->fetchAll(PDO::FETCH_ASSOC);
                     <lord-icon src="../../../assets/animation/email.json" trigger="loop" colors="primary:#007a3f" style="width:24px;height:24px" class="ml-2"></lord-icon>
                     <input type="email" name="email"
                         value="<?= htmlspecialchars($contact['email']) ?>"
-                        class="flex-1 py-3 pl-2 outline-none" required>
+                        class="flex-1 py-3 pl-2 outline-none" required
+                        placeholder="votre.email@contact.com">
                 </div>
             </div>
 
@@ -144,7 +149,8 @@ $users = $stmtUsers->fetchAll(PDO::FETCH_ASSOC);
                     <lord-icon src="../../../assets/animation/phone.json" trigger="loop" colors="primary:#007a3f" style="width:24px;height:24px" class="ml-2"></lord-icon>
                     <input type="text" name="phone"
                         value="<?= htmlspecialchars($contact['phone']) ?>"
-                        class="flex-1 py-3 pl-2 outline-none">
+                        class="flex-1 py-3 pl-2 outline-none"
+                        placeholder="06********">
                 </div>
             </div>
 
@@ -155,7 +161,8 @@ $users = $stmtUsers->fetchAll(PDO::FETCH_ASSOC);
                     <lord-icon src="../../../assets/animation/villeAnim.json" trigger="loop" colors="primary:#007a3f" style="width:24px;height:24px" class="ml-2"></lord-icon>
                     <input type="text" name="city"
                         value="<?= htmlspecialchars($contact['city']) ?>"
-                        class="flex-1 py-3 pl-2 outline-none">
+                        class="flex-1 py-3 pl-2 outline-none"
+                        placeholder="Ex : Casa">
                 </div>
             </div>
 
