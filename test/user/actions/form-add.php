@@ -39,7 +39,7 @@ if (isset($_FILES['photo']['name']) && $_FILES['photo']['name'] != '') {
     if (!in_array($_FILES['photo']['type'], $allowedTypes)) {
         $errors['photo'] = "Format de photo invalide (jpg, jpeg, png uniquement)";
     } else {
-        $storageDir = "../../../storage/photos_contacts/";
+        $storageDir = "/storage/photos_contacts/";
         if (!is_dir($storageDir)) mkdir($storageDir, 0755, true);
 
         $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);

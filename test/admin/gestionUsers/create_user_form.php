@@ -1,21 +1,24 @@
-<?php
-require_once("../../../inc/Navbar.php");
-require_once("../../../db/dbConnexion.php");
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - Créer Utilisateur</title>
+  <title>EMSIContact - Créer Utilisateur</title>
+       <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
 </head>
 
 <body class="bg-gray-50 ">
-
+  <?php
+require_once("../../../inc/Navbar.php");
+require_once("../../../inc/Permission/Admin.php");
+require_once("../../../db/dbConnexion.php");
+?>
   <div class="text-center flex flex-col items-center gap-2 mb-6 mt-24 ">
     <lord-icon
       src="../../../assets/animation/userLooking.json"

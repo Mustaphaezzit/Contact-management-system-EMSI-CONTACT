@@ -21,7 +21,7 @@ $currentUri = $_SERVER['REQUEST_URI'];
                     <li><a href="/test/admin/gestionUsers/users.php" class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/users.php' || $currentUri === '/test/admin/gestionUsers/users.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">Utilisateurs</a></li>
                     <li><a href="/test/admin/gestionTags/tags.php" class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/test/admin/gestionTags/tags.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">Tags</a></li>
                 <?php else: ?>
-                    <li><a href="/test/user/dashboardUser.php" class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/test/dashboardUser.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">Mon Tableau de bord</a></li>
+                    <li><a href="/test/user/dashboardUser.php" class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/test/user/dashboardUser.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">Mon Tableau de bord</a></li>
                     <li><a href="/test/user/mes_contacts.php" class="text-gray-700 hover:text-green-600 <?= ($currentUri === '/test/user/mes_contacts.php') ? 'text-green-600 font-bold border-b-2 border-green-600' : '' ?>">Mes Contacts</a></li>
                 <?php endif; ?>
             </ul>

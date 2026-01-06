@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("../../inc/Navbar.php");
+require_once("../../inc/Permission/User.php");
 require_once("../../db/dbConnexion.php");
 
 $userId = $_SESSION['user_id'] ?? null;
@@ -45,13 +45,15 @@ unset($_SESSION['errors'], $_SESSION['old']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier Contact</title>
+    <title>EMSIContact - Modifier Contact</title>
+         <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 </head>
 <body class="bg-gray-50">
-
+<?php require_once("../../inc/Navbar.php"); ?>
 <main class="pt-16 min-h-screen flex flex-col items-center justify-center gap-8 p-6">
 
     <!-- HEADER -->
@@ -79,7 +81,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
             </div>
         <?php endif; ?>
 
-        <form action="./actions/form-edit.php" method="POST" enctype="multipart/form-data">
+        <form action="./actions/form-update.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $user["id"] ?>">
 
             <!-- AVATAR -->

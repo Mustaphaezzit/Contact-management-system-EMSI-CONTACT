@@ -76,18 +76,20 @@ foreach ($tagsData as $row) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <title>Tableau de bord utilisateur</title>
+    <title> EMSIContact - Tableau de bord utilisateur</title>
 </head>
 
-<body class="">
+<body class="bg-gray-50">
     <?php
     require_once("../../inc/Navbar.php");
     ?>
-    <main class="pt-20 min-h-screen p-6 md:p-10">
+    <main class="pt-20 min-h-screen p-6 md:p-10 mt-10">
         <div class="max-w-7xl mx-auto ">
             <!-- En-tête -->
             <div class="mb-8">

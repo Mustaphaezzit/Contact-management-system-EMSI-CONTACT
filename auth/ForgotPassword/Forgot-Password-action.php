@@ -8,8 +8,8 @@ if (!$email) {
     exit("Email requis.");
 }
 
-// Vérifier l'éxistance de l'utilisateur
-$sql = "SELECT * FROM users WHERE email = ?";
+// Vérifier l'existence de l'utilisateur
+$sql = "SELECT id FROM users WHERE email = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$email]);
 $user = $stmt->fetch();
@@ -18,29 +18,39 @@ if (!$user) {
     exit("Aucun utilisateur trouvé avec cet email.");
 }
 
-// Génération de mot de passe aléatoire
-$newPassword = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), 0, 8);
+// Génération du mot de passe aléatoire
+$newPassword = bin2hex(random_bytes(4)); // 8 caractères
 
-// Mettre à jour le mot de passe 
+// Hachage du mot de passe
+$hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+// Mise à jour du mot de passe haché
 $sqlPass = "UPDATE users SET password = ? WHERE email = ?";
 $stmt = $pdo->prepare($sqlPass);
-$stmt->execute([$newPassword, $email]);
+$stmt->execute([$hashedPassword, $email]);
 
-// Contenu 
-$subject = "Forgot Password";
-$message = "Hello,\n\nYour new password is:\n\n$newPassword\n\nPlease login and change it.";
+// Email
+// Email
+$subject = "Réinitialisation de votre mot de passe";
 
-$headers  = "From: Admin <" . ($_SESSION['user_email'] ?? 'admin@example.com') . ">\r\n";
-$headers .= "Reply-To: " . ($_SESSION['user_email'] ?? 'admin@example.com') . "\r\n";
+$message = "Bonjour,\n\n"
+         . "Suite à votre demande, votre mot de passe a été réinitialisé.\n\n"
+         . "Votre nouveau mot de passe est :\n\n"
+         . $newPassword . "\n\n"
+         . "Nous vous recommandons de vous connecter et de le modifier immédiatement pour des raisons de sécurité.\n\n"
+         . "Cordialement,\n"
+         . "L'équipe EMSI Contact";
+
+$headers  = "From: EMSI Contact <admin@contactEmsi.ma>\r\n";
+$headers .= "Reply-To: admin@contactEmsi.ma\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
 
 // Envoi email
 if (mail($email, $subject, $message, $headers)) {
-
     setcookie('remember_email', $email, time() + 604800, "/");
     header("Location: /auth/Login.php?reset=success");
     exit;
-
 } else {
     echo "Impossible d'envoyer l'email.";
 }

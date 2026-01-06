@@ -15,6 +15,7 @@
 
 <?php
 require_once("../../../inc/Navbar.php");
+require_once("../../../inc/Permission/Admin.php");
 require_once("../../../db/dbConnexion.php");
 
 /* Sécurité ID */
@@ -26,7 +27,7 @@ if (!$id) {
 /* Contact */
 $stmt = $pdo->prepare("SELECT * FROM contacts WHERE id = ?");
 $stmt->execute([$id]);
-$contact = $stmt->fetch(PDO::FETCH_ASSOC);
+$contact = $stmt->fetch();
 
 if (!$contact) {
     die("Contact introuvable");

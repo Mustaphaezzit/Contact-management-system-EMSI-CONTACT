@@ -4,7 +4,7 @@ require_once("../../../db/dbConnexion.php");
 
 $userId = $_SESSION['user_id'] ?? null;
 if (!$userId) {
-    header("Location: ../../login.php");
+    header("Location: /auth/login.php");
     exit;
 }
 $id=$_GET["id"];

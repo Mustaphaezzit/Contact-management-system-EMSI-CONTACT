@@ -1,17 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Modifier Etiquettes</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdn.lordicon.com/lordicon.js"></script>
-</head>
 <?php
-require_once("../../../inc/Navbar.php");
+require_once("../../../inc/Permission/Admin.php");
 require_once("../../../db/dbConnexion.php");
 $id=$_GET["id"];
 $sql="SELECT * from tags where id=?";
@@ -19,6 +7,20 @@ $stmt=$pdo->prepare($sql);
 $stmt->execute([$id]);
 $tag=$stmt->fetch();
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
+
+    <title>EMSIContact - Modifier Etiquettes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</head>
+<?php require_once("../../../inc/Navbar.php");?>
 <body>
     <div class="text-center flex flex-col items-center gap-2 mb-6 mt-24 ">
         <lord-icon
