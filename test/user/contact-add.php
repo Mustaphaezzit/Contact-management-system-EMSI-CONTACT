@@ -73,7 +73,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
                                    style="width:24px;height:24px"
                                    class="ml-2"></lord-icon>
                         <input type="text" name="nom" class="flex-1 py-3 pl-2 outline-none"
-                               required placeholder="Votre nom" value="<?= htmlspecialchars($old['nom'] ?? '') ?>">
+                                 placeholder="Votre nom" value="<?= htmlspecialchars($old['nom'] ?? '') ?>">
                     </div>
                 </div>
 
@@ -102,8 +102,8 @@ unset($_SESSION['errors'], $_SESSION['old']);
                                    colors="primary:#007a3f"
                                    style="width:24px;height:24px"
                                    class="ml-2"></lord-icon>
-                        <input type="email" name="email" placeholder="votre.email@contact.com"
-                               class="flex-1 py-3 pl-2 outline-none" required
+                        <input type="text" name="email" placeholder="votre.email@contact.com"
+                               class="flex-1 py-3 pl-2 outline-none" 
                                value="<?= htmlspecialchars($old['email'] ?? '') ?>">
                     </div>
                 </div>

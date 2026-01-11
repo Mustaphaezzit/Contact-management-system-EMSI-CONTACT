@@ -11,7 +11,7 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    <title>Inscription - Gestion Contact</title>
+    <title>EMSICONTACT - Inscription</title>
 </head>
 
 <body class="bg-gray-50">
