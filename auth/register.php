@@ -11,29 +11,26 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
-    <title>EMSICONTACRT - Connexion</title>
+    <title>EMSICONTACT - Inscription</title>
 </head>
 
 <body class="bg-gray-50">
 
     <!-- Navbar -->
-    <?php
-    require_once("../inc/Navbar.php");
-    ?>
+    <?php require_once("../inc/Navbar.php"); ?>
 
-
-    <main class="pt-16 min-h-screen flex flex-col md:flex-row items-center justify-center md:justify-evenly gap-8 p-6 md:p-10">
+    <main class="pt-16 min-h-screen flex flex-col md:flex-row items-center justify-center md:justify-evenly gap-8 p-6 md:p-10 mt-10">
 
         <!-- Image animée -->
         <div class="order-1 md:order-2 flex items-center justify-center">
-            <img src="../assets/svg/loginAnim.svg" alt="doctors" class="w-64 md:w-96 lg:w-[500px] max-w-full h-auto">
+            <img src="../assets/svg/registre.svg" alt="registration" class="w-64 md:w-96 lg:w-[500px] max-w-full h-auto">
         </div>
 
         <!-- Formulaire -->
         <div class="w-full max-w-md order-2 md:order-1 shadow-[10px_10px_0_#007a3f] border border-[#007a3f] rounded-2xl p-4">
             <div class="text-center ">
                 <h1 class="text-3xl font-bold text-gray-800">Gestion Contacts</h1>
-                <p class="text-gray-600 mt-2">Connectez-vous à votre espace</p>
+                <p class="text-gray-600 mt-2">Créez votre compte</p>
             </div>
 
             <div class="">
@@ -47,9 +44,42 @@ session_start();
                     </div>
                 <?php endif; ?>
 
+                <form action="./register-action.php" method="POST" class="space-y-6">
 
+                    <!-- Nom -->
+                    <div class="relative">
+                        <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>
+                        <div class="input-container flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1
+            focus-within:ring-2 focus-within:ring-[#007a3f] transition">
+                            <lord-icon
+                                src="../assets/animation/UserAnim.json"
+                                trigger="loop"
+                                colors="primary:#007a3f"
+                                style="width:24px;height:24px"
+                                class="ml-2">
+                            </lord-icon>
+                            <input type="text" name="nom" id="nom" placeholder="Votre nom"
+                                class="flex-1 py-3 outline-none" required>
+                        </div>
+                    </div>
 
-                <form action="form-login.php" method="POST" class="space-y-6">
+                    <!-- Prénom -->
+                    <div class="relative">
+                        <label for="prenom" class="block text-sm font-medium text-gray-700">Prénom</label>
+                        <div class="input-container flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1
+            focus-within:ring-2 focus-within:ring-[#007a3f] transition">
+                            <lord-icon
+                                src="../assets/animation/UserAnim.json"
+                                trigger="loop"
+                                colors="primary:#007a3f"
+                                style="width:24px;height:24px"
+                                class="ml-2">
+                            </lord-icon>
+                            <input type="text" name="prenom" id="prenom" placeholder="Votre prénom"
+                                class="flex-1 py-3 outline-none" required>
+                        </div>
+                    </div>
+
                     <!-- Email -->
                     <div class="relative">
                         <label for="email" class="block text-sm font-medium text-gray-700">Adresse email</label>
@@ -63,13 +93,6 @@ session_start();
                                 class="ml-2">
                             </lord-icon>
                             <input type="email" name="email" id="email" placeholder="votre.email@contact.com"
-                                value="<?php
-                                        if (isset($_COOKIE['remember_email'])) {
-                                            echo htmlspecialchars($_COOKIE['remember_email']);
-                                        } elseif (isset($_SESSION['user_email'])) {
-                                            echo htmlspecialchars($_SESSION['user_email']);
-                                        }
-                                        ?>"
                                 class="flex-1 py-3 outline-none" required>
                         </div>
                     </div>
@@ -90,33 +113,43 @@ session_start();
                                 class="flex-1 py-3 outline-none" required>
                         </div>
                     </div>
+
+                    <!-- Confirm Password -->
                     <div>
-                        <a href="./ForgotPassword/ForgotPassword.php" class="text-sm font-medium text-[#007a3f] hover:text-[#00612f] transition">
-                            Mot de passe oublié ?
-                        </a>
+                        <label for="password_confirm" class="block text-sm font-medium text-gray-700">Confirmer le mot de passe</label>
+                        <div class="input-container flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1
+            focus-within:ring-2 focus-within:ring-[#007a3f] transition">
+                            <lord-icon
+                                src="../assets/animation/lock.json"
+                                trigger="loop"
+                                colors="primary:#007a3f"
+                                style="width:24px;height:24px"
+                                class="ml-2">
+                            </lord-icon>
+                            <input type="password" name="password_confirm" id="password_confirm" placeholder="••••••••"
+                                class="flex-1 py-3 outline-none" required>
+                        </div>
                     </div>
 
                     <button type="submit"
                         class="w-full bg-[#007a3f] text-white font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl hover:bg-transparent hover:text-[#007a3f] hover:border hover:border-[#007a3f]">
-                        Connexion
+                        S'inscrire
                     </button>
-                    <p class="text-sm text-gray-600 text-center mt-4">
-                        Vous n'avez pas de compte ?
-                        <a href="register.php" class="text-[#007a3f] hover:text-[#00612f] font-medium transition">
-                            S'inscrire
-                        </a>
+
+                    <p class="text-sm text-gray-600 text-center mt-2">
+                        Vous avez déjà un compte ? 
+                        <a href="login.php" class="text-[#007a3f] hover:text-[#00612f] transition">Connexion</a>
                     </p>
                 </form>
             </div>
         </div>
     </main>
+
     <!-- Footer -->
-    <?php
-    require_once("../inc/Footer.php");
-    ?>
+    <?php require_once("../inc/Footer.php"); ?>
+
     <script>
         feather.replace();
     </script>
 </body>
-
 </html>

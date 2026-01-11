@@ -76,7 +76,7 @@ foreach ($tagsData as $row) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
+    <link rel="icon" type="image/png" href="/assets/EmsiContact.png" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -140,7 +140,10 @@ foreach ($tagsData as $row) {
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-gray-500 text-sm font-medium mb-1">Ville la plus représentée</p>
-                            <h3 class="text-3xl font-bold text-gray-800"><?= $infoVille["city"] ?></h3>
+                            <h3 class="text-3xl font-bold text-gray-800">
+                                <?= is_array($infoVille) && isset($infoVille["city"]) ? $infoVille["city"] : "-" ?>
+                            </h3>
+
                         </div>
                         <div class="bg-[#007a3f] bg-opacity-10 p-4 rounded-full">
                             <lord-icon
@@ -184,7 +187,7 @@ foreach ($tagsData as $row) {
                 datasets: [{
                     label: 'Répartition par tags',
                     data: <?= json_encode($tagCounts) ?>,
-                    backgroundColor:  ['#007a3f','#adffd8','#0aff89','#00cc69','#00b85f','#008f4a','#006635','#00522a','#002915'],
+                    backgroundColor: ['#007a3f', '#adffd8', '#0aff89', '#00cc69', '#00b85f', '#008f4a', '#006635', '#00522a', '#002915'],
                     borderColor: '#fff',
                     borderWidth: 2
                 }]
@@ -215,7 +218,7 @@ foreach ($tagsData as $row) {
                 labels: <?= json_encode($villeLabels) ?>,
                 datasets: [{
                     data: <?= json_encode($villeCounts) ?>,
-                    backgroundColor:  ['#007a3f','#adffd8','#0aff89','#00cc69','#00b85f','#008f4a','#006635','#00522a','#002915'],
+                    backgroundColor: ['#007a3f', '#adffd8', '#0aff89', '#00cc69', '#00b85f', '#008f4a', '#006635', '#00522a', '#002915'],
                     borderWidth: 2,
                     borderColor: '#fff'
                 }]

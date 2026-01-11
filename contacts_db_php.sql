@@ -12,10 +12,6 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données : `contacts_db_php`
@@ -158,8 +154,77 @@ ALTER TABLE `contact_tag`
   ADD CONSTRAINT `contact_tag_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO users (nom, prenom, email, password, role) VALUES
+('Ezzit', 'Mustapha', 'mustapha.ezzit@company.com',
+ '$2y$10$WqXz2nKk8kQZ5JYJpLw9xO3C6VZqz7V8Z0y9M1QG9zXj8ZPqF9W7a', 'admin'),
+
+('Benali', 'Sara', 'sara.benali@company.com',
+ '$2y$10$k8GQJk8ZKkD4sF5Y0ZzGQeXcZK0s8AjtKoa6HgMHqYjgJv1nP9WlS', 'user'),
+
+('El Amrani', 'Youssef', 'youssef.elamrani@company.com',
+ '$2y$10$k8GQJk8ZKkD4sF5Y0ZzGQeXcZK0s8AjtKoa6HgMHqYjgJv1nP9WlS', 'user'),
+
+('Tahiri', 'Khadija', 'khadija.tahiri@company.com',
+ '$2y$10$k8GQJk8ZKkD4sF5Y0ZzGQeXcZK0s8AjtKoa6HgMHqYjgJv1nP9WlS', 'user'),
+
+('Ouazzani', 'Hamza', 'hamza.ouazzani@company.com',
+ '$2y$10$k8GQJk8ZKkD4sF5Y0ZzGQeXcZK0s8AjtKoa6HgMHqYjgJv1nP9WlS', 'user');
+
+
+INSERT INTO tags (label) VALUES
+('Family'),
+('Work'),
+('Client'),
+('Supplier'),
+('Emergency'),
+('Partner'),
+('VIP'),
+('HR'),
+('Support'),
+('Other');
+
+
+INSERT INTO contacts (
+  owner_id, nom, prenom, email, phone, city, company, notes, photo_path
+) VALUES
+(1, 'Karimi', 'Omar', 'omar.karimi@partner.com', '0611111111', 'Casablanca', 'Karimi SARL', 'Business partner', NULL),
+(1, 'Zahraoui', 'Imane', 'imane.zahraoui@client.com', '0622222222', 'Rabat', 'IZ Consulting', 'VIP client', NULL),
+
+(2, 'Bennani', 'Hicham', 'hicham.bennani@work.com', '0633333333', 'Tanger', 'LogiTech', 'Project manager', NULL),
+(2, 'Fassi', 'Salma', 'salma.fassi@hr.com', '0644444444', 'Fes', 'HR Solutions', 'HR contact', NULL),
+
+(3, 'Amine', 'Nabil', 'nabil.amine@supplier.com', '0655555555', 'Marrakech', 'SupplyPro', 'Main supplier', NULL),
+(3, 'Chakir', 'Aya', 'aya.chakir@support.com', '0666666666', 'Agadir', 'HelpDesk', 'Technical support', NULL),
+
+(4, 'Rami', 'Anas', 'anas.rami@client.com', '0677777777', 'Kenitra', 'Rami Design', 'Design client', NULL),
+(4, 'Lahlou', 'Meriem', 'meriem.lahlou@vip.com', '0688888888', 'Rabat', 'Luxury Corp', 'High priority', NULL),
+
+(5, 'Skalli', 'Younes', 'younes.skalli@partner.com', '0699999999', 'Oujda', 'Skalli Group', 'Strategic partner', NULL);
+
+
+INSERT INTO contact_tag (contact_id, tag_id) VALUES
+(1, 2), -- Work
+(1, 6), -- Partner
+
+(2, 3), -- Client
+(2, 7), -- VIP
+
+(3, 2), -- Work
+(3, 8), -- HR
+
+(4, 8), -- HR
+
+(5, 4), -- Supplier
+(5, 2), -- Work
+
+(6, 9), -- Support
+
+(7, 3), -- Client
+(7, 2), -- Work
+
+(8, 7), -- VIP
+
+(9, 6); -- Partner
+
 
 

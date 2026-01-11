@@ -57,7 +57,9 @@ if (!$user) {
         <label class="block text-sm font-medium text-gray-700">Nom</label>
         <div class="flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1 focus-within:ring-2 focus-within:ring-[#007a3f] transition">
           <lord-icon src="../../../assets/animation/UserAnim.json" trigger="loop" colors="primary:#007a3f" style="width:24px;height:24px" class="ml-2"></lord-icon>
-          <input type="text" name="nom" class="flex-1 py-3 pl-2 outline-none" required value="<?= htmlspecialchars($user['nom']) ?>">
+          <input type="text" name="nom" class="flex-1 py-3 pl-2 outline-none" required value="<?= htmlspecialchars($user['nom']) ?>"
+          placeholder="Nom de l'utilisateur"
+          >
         </div>
       </div>
 
@@ -66,7 +68,9 @@ if (!$user) {
         <label class="block text-sm font-medium text-gray-700">Prénom</label>
         <div class="flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1 focus-within:ring-2 focus-within:ring-[#007a3f] transition">
           <lord-icon src="../../../assets/animation/UserAnim.json" trigger="loop" colors="primary:#007a3f" style="width:24px;height:24px" class="ml-2"></lord-icon>
-          <input type="text" name="prenom" class="flex-1 py-3 pl-2 outline-none" required value="<?= htmlspecialchars($user['prenom']) ?>">
+          <input type="text" name="prenom" class="flex-1 py-3 pl-2 outline-none" required value="<?= htmlspecialchars($user['prenom']) ?>"
+          placeholder="Prénom de l'utilisateur"
+          >
         </div>
       </div>
 
@@ -75,7 +79,9 @@ if (!$user) {
         <label class="block text-sm font-medium text-gray-700">Email</label>
         <div class="flex items-center border border-[#007a3f] rounded-lg overflow-hidden mt-1 focus-within:ring-2 focus-within:ring-[#007a3f] transition">
           <lord-icon src="../../../assets/animation/email.json" trigger="loop" colors="primary:#007a3f" style="width:24px;height:24px" class="ml-2"></lord-icon>
-          <input type="email" name="email" class="flex-1 py-3 pl-2 outline-none" required value="<?= htmlspecialchars($user['email']) ?>">
+          <input type="email" name="email" class="flex-1 py-3 pl-2 outline-none" required value="<?= htmlspecialchars($user['email']) ?>"
+          placeholder="votre.email@contact.com"
+          >
         </div>
       </div>
 
